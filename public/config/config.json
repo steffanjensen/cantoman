@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0xdd685872d7858b24fa73ae0c038537e0891e58c0",
+  "SCAN_LINK": "https://testnet.ftmscan.com/token/0xdd685872d7858b24fa73ae0c038537e0891e58c0",
+  "NETWORK": {
+    "NAME": "Fantom testnet",
+    "SYMBOL": "FTM",
+    "ID": 4002
+  },
+  "NFT_NAME": "The Stripes NFT",
+  "SYMBOL": "TSNFT",
+  "MAX_SUPPLY": 3333,
+  "WEI_COST": 4000000000000000000,
+  "DISPLAY_COST": 4,
+  "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/the-stripes-nft",
+  "SHOW_BACKGROUND": true
+}
