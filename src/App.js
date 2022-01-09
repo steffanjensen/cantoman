@@ -121,7 +121,6 @@ function App() {
     SHOW_BACKGROUND: false,
   });
   
-  console.log("heelp");
   console.log("allTokens ", data.allTokens); 
   
   
