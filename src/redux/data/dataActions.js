@@ -42,6 +42,8 @@ export const fetchData = () => {
       dispatch(
         fetchDataSuccess({
           totalSupply,
+          name,
+          allTokens,
           // cost,
         })
       );
