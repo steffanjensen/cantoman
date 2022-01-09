@@ -187,7 +187,36 @@ function App() {
     const config = await configResponse.json();
     SET_CONFIG(config);
   };
-
+  
+  
+  
+ const getImageData = () => {
+    const canvasEl = elementRef.current;
+    let dataUrl = canvasEl.toDataURL("image/png");
+    const buffer = Buffer(dataUrl.split(",")[1], "base64");
+    return buffer;
+  };
+  
+  
+  const fetchMetatDataForNFTS = () => {
+    setNFTS([]);
+    data.allTokens.forEach((nft) => {
+      fetch(nft.uri)
+        .then((response) => response.json())
+        .then((metaData) => {
+          setNFTS((prevState) => [
+            ...prevState,
+            { id: nft.id, metaData: metaData },
+          ]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  };
+  
+  
+  
   useEffect(() => {
     getConfig();
   }, []);
