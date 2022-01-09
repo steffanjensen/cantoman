@@ -121,7 +121,9 @@ function App() {
     SHOW_BACKGROUND: false,
   });
   
+  
   const tokens = data.allTokens;
+  tokens = JSON.parse(tokens);
   tokens.forEach(element => {
   console.log("test");
   console.log(element);
