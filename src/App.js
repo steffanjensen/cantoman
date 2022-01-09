@@ -125,7 +125,15 @@ function App() {
   const tokens = data.allTokens;
   tokens.forEach(element => {
    /* const token_url = blockchain.smartContract.methods.tokenURI(element);*/
-    console.log("https://gateway.pinata.cloud/ipfs/Qmb3AFZR2yrUDB5zMb66M5UUC4A3nhqy6aMgfRVWH8v4nA/" + element + ".json");
+    return fetch("https://gateway.pinata.cloud/ipfs/Qmb3AFZR2yrUDB5zMb66M5UUC4A3nhqy6aMgfRVWH8v4nA/" + element + ".json")
+    .then((response) => response.json())
+    .then((responseJson) => {
+     return responseJson.image;
+   })
+   .catch((error) => {
+     console.error(error);
+    });
+    
    });
 
   
