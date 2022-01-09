@@ -31,7 +31,7 @@ export const fetchData = (account) => {
         .call();
         let allTokens = await store
         .getState()
-        .blockchain.smartContract.methods.tokenOfOwnerByIndex(account, 0)
+        .blockchain.smartContract.methods.balanceOf(account)
         .call();
       console.log("allTokens ", allTokens);
       // let cost = await store
