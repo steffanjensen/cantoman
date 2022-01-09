@@ -124,9 +124,8 @@ function App() {
   
   const tokens = data.allTokens;
   tokens.forEach(element => {
-    const token_url = blockchain.smartContract.methods.tokenURI(element);
-    console.log(element);
-    console.log(token_url);
+   /* const token_url = blockchain.smartContract.methods.tokenURI(element);*/
+    console.log("https://gateway.pinata.cloud/ipfs/Qmb3AFZR2yrUDB5zMb66M5UUC4A3nhqy6aMgfRVWH8v4nA" + element + ".json");
    });
 
   
