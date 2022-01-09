@@ -124,7 +124,7 @@ function App() {
   
   const tokens = data.allTokens;
   tokens.forEach(element => {
-    console.log("test");
+    .blockchain.smartContract.methods.tokenURI(element)
     console.log(element);
    });
 
