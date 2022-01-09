@@ -1,6 +1,6 @@
 {
-  "CONTRACT_ADDRESS": "0xbfe325e5f403b6d75eec747b0457698666e508c0",
-  "SCAN_LINK": "https://testnet.ftmscan.com/token/0xbfe325e5f403b6d75eec747b0457698666e508c0",
+  "CONTRACT_ADDRESS": "0xdd685872d7858b24fa73ae0c038537e0891e58c0",
+  "SCAN_LINK": "https://testnet.ftmscan.com/token/0xdd685872d7858b24fa73ae0c038537e0891e58c0",
   "NETWORK": {
     "NAME": "Fantom testnet",
     "SYMBOL": "FTM",
