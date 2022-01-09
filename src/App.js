@@ -123,7 +123,11 @@ function App() {
   
   
   const tokens = data.allTokens;
-  console.log(tokens);
+  tokens = JSON.parse(tokens);
+  tokens.forEach(element => {
+    console.log("test");
+    console.log(element);
+   });
 
   
   const claimNFTs = () => {
