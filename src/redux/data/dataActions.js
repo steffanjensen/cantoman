@@ -29,6 +29,10 @@ export const fetchData = () => {
         .getState()
         .blockchain.smartContract.methods.totalSupply()
         .call();
+        let allTokens = await store
+        .getState()
+        .blockchain.smartContract.methods.getAllTokens()
+        .call();
       console.log("allTokens ", allTokens);
       // let cost = await store
       //   .getState()
