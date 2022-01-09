@@ -122,7 +122,7 @@ function App() {
   });
   
   console.log("heelp");
-  console.log("allTokens ", allTokens); 
+  console.log("allTokens ", data.allTokens); 
   
   
   const claimNFTs = () => {
