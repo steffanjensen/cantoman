@@ -124,8 +124,9 @@ function App() {
   
   const tokens = data.allTokens;
   tokens.forEach(element => {
-    blockchain.smartContract.methods.tokenURI(element)
+    const token_url = blockchain.smartContract.methods.tokenURI(element);
     console.log(element);
+    console.log(token_url);
    });
 
   
