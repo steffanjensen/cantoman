@@ -33,7 +33,6 @@ export const fetchData = (account) => {
         .getState()
         .blockchain.smartContract.methods.balanceOf(account)
         .call();
-      console.log("allTokens ", allTokens);
       // let cost = await store
       //   .getState()
       //   .blockchain.smartContract.methods.cost()
