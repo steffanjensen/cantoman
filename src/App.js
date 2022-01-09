@@ -121,7 +121,9 @@ function App() {
     SHOW_BACKGROUND: false,
   });
   
-  console.log(NFTS);
+  console.log("heelp");
+  console.log("allTokens ", allTokens); 
+  
   
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
@@ -467,6 +469,5 @@ function App() {
   );
 }
 
-console.log("heelp");
-console.log("allTokens ", allTokens);
+
 export default App;
