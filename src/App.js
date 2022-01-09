@@ -123,19 +123,26 @@ function App() {
   
   
   const tokens = data.allTokens;
+  
+  
   tokens.forEach(element => {
    /* const token_url = blockchain.smartContract.methods.tokenURI(element);*/
-       return fetch('/config/json/' + element + ".json")
-       .then((response) => response.json())
-   .then((responseJson) => {
-     console.log(responseJson.image);
- 
-})
-   .catch((error) => {
-     console.error(error);
-   });
-}
-
+      fetch('/config/json/' + element + ".json", {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+    
+       .then(function(response){
+        console.log(response)
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+      });
+    
+  });
   
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
