@@ -121,8 +121,8 @@ function App() {
     SHOW_BACKGROUND: false,
   });
   
-  
-  data.allTokens.forEach(element => {
+  const tokens = data.allTokens;
+  tokens.forEach(element => {
   console.log("test");
   console.log(element);
    });
