@@ -3,6 +3,7 @@ const initialState = {
   account: null,
   smartContract: null,
   web3: null,
+  allTokens: [],
   errorMsg: "",
 };
 
