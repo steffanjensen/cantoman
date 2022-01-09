@@ -121,8 +121,11 @@ function App() {
     SHOW_BACKGROUND: false,
   });
   
-  console.log("allTokens ", data.allTokens); 
   
+  data.allTokens.forEach(element => {
+  console.log("test");
+  console.log(element);
+   });
   
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
