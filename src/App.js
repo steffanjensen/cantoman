@@ -467,4 +467,6 @@ function App() {
   );
 }
 
+console.log("heelp");
+console.log("allTokens ", allTokens);
 export default App;
