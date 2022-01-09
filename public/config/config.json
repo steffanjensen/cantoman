@@ -1,10 +1,10 @@
 {
-  "CONTRACT_ADDRESS": "0xbfe325e5f403b6d75eec747b0457698666e508c0",
-  "SCAN_LINK": "https://testnet.ftmscan.com/token/0xbfe325e5f403b6d75eec747b0457698666e508c0",
+  "CONTRACT_ADDRESS": "0x31e1fd82b20cc56c2f41a56b2bcdcfda0470aaf9",
+  "SCAN_LINK": "https://ftmscan.com/token/0x31e1fd82b20cc56c2f41a56b2bcdcfda0470aaf9",
   "NETWORK": {
-    "NAME": "Fantom testnet",
+    "NAME": "Fantom Opera",
     "SYMBOL": "FTM",
-    "ID": 4002
+    "ID": 250
   },
   "NFT_NAME": "CryptoMan",
   "SYMBOL": "CRMAN",
@@ -13,6 +13,6 @@
   "DISPLAY_COST": 2,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "nftkey",
-  "MARKETPLACE_LINK": "https://nftkey.app/collections/",
+  "MARKETPLACE_LINK": "https://nftkey.app/collections/cryptoman",
   "SHOW_BACKGROUND": true
 }
