@@ -123,7 +123,7 @@ function App() {
   
   
   const tokens = data.allTokens;
-  console.log(typeof tokens);
+  console.log(tokens);
 
   
   const claimNFTs = () => {
