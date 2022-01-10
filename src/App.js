@@ -122,9 +122,16 @@ function App() {
   });
   
   
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+  
+function get_all_nfts(){  
   const tokens = data.allTokens;
-  
-  
   tokens.forEach(element => {
    /* const token_url = blockchain.smartContract.methods.tokenURI(element);*/
       fetch('/config/json/' + element + ".json", {
@@ -139,13 +146,17 @@ function App() {
         return response.json();
       })
       .then(function(myJson) {
-        document.getElementById("output").innerHTML += myJson.name + "<br />";
-        document.getElementById("image").innerHTML += myJson.image + "<br />";
-        console.log(myJson.name);
+        let image_url = "https://gateway.pinata.cloud/ipfs/" + myJson.image;
+        let image_result = image_url.replace("ipfs://", "");
+     /*   document.getElementById("output").innerHTML += myJson.name + "<br />"; */
+        var new_nft = document.getElementById("image");
+        new_nft.appendChild(document.createElement('img')).src = image_result;
+        sleep(200);
       });
     
   });
-  
+};
+
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
     let gasLimit = CONFIG.GAS_LIMIT;
@@ -171,7 +182,7 @@ function App() {
       .then((receipt) => {
         console.log(receipt);
         setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit frontpage to view it.`
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -302,26 +313,13 @@ function App() {
                 textAlign: "center",
               }}
             >
-              <StyledButton
-                onClick={(e) => {
-                  window.open("/config/roadmap.pdf", "_blank");
-                }}
-                style={{
-                  margin: "5px",
-                }}
-              >
-                Roadmap
-              </StyledButton>
-              <StyledButton
-                style={{
-                  margin: "5px",
-                }}
-                onClick={(e) => {
-                  window.open(CONFIG.MARKETPLACE_LINK, "_blank");
-                }}
-              >
-                {CONFIG.MARKETPLACE}
-              </StyledButton>
+     <s.TextTitle style={{ textAlign: "center", color: "red" }}>
+     <center>Random wallets will get NFTs airdropped to them. </center>
+     </s.TextTitle>
+          <s.TextTitle style={{ textAlign: "center", color: "var(--accent-text)" }}>
+
+     The more CryptoMan you hold the better the chances are of winning!
+     </s.TextTitle>
             </span>
             <s.SpacerSmall />
             {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
@@ -470,6 +468,16 @@ function App() {
             }}
           >
                         <h3>Your Collection:</h3>
+                                            <StyledButton
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(connect());
+                        get_all_nfts();
+                      }}
+                    >
+                      Click Here To See Your Collection
+                    </StyledButton><br></br>
+                    Remember to click "connect" first
 <p>
 <span id="output"></span>
 <span id="image"></span>
