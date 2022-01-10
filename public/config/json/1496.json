@@ -1,0 +1,31 @@
+{
+  "name": "CryptoMan #1496",
+  "description": "3.333 Generated CryptoMan",
+  "image": "ipfs://QmeCE2nHW6q3aZ3ybo7qAwpr5KWVqTyLmN7GpXurgDWPk7/1496.png",
+  "dna": "1e2e7e12e8f677ec19e7e82f0400f0c2efda0134",
+  "edition": 1496,
+  "date": 1641610472563,
+  "attributes": [
+    {
+      "trait_type": "background",
+      "value": "Red"
+    },
+    {
+      "trait_type": "color",
+      "value": "black"
+    },
+    {
+      "trait_type": "hair",
+      "value": "red"
+    },
+    {
+      "trait_type": "eyes",
+      "value": "blue"
+    },
+    {
+      "trait_type": "glasses",
+      "value": "orange"
+    }
+  ],
+  "compiler": "CryptoMan"
+}

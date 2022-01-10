@@ -1,0 +1,31 @@
+{
+  "name": "CryptoMan #2375",
+  "description": "3.333 Generated CryptoMan",
+  "image": "ipfs://QmeCE2nHW6q3aZ3ybo7qAwpr5KWVqTyLmN7GpXurgDWPk7/2375.png",
+  "dna": "c79602166ce14642766c3c4217d84f28f85b9d02",
+  "edition": 2375,
+  "date": 1641610621958,
+  "attributes": [
+    {
+      "trait_type": "background",
+      "value": "pink"
+    },
+    {
+      "trait_type": "color",
+      "value": "zombie"
+    },
+    {
+      "trait_type": "hair",
+      "value": "blue"
+    },
+    {
+      "trait_type": "eyes",
+      "value": "orange"
+    },
+    {
+      "trait_type": "glasses",
+      "value": "Blue"
+    }
+  ],
+  "compiler": "CryptoMan"
+}

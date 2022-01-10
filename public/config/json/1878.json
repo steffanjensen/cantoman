@@ -1,0 +1,31 @@
+{
+  "name": "CryptoMan #1878",
+  "description": "3.333 Generated CryptoMan",
+  "image": "ipfs://QmeCE2nHW6q3aZ3ybo7qAwpr5KWVqTyLmN7GpXurgDWPk7/1878.png",
+  "dna": "d59b2807fc9fc95bbabc5005835669b36e8b50c3",
+  "edition": 1878,
+  "date": 1641610537424,
+  "attributes": [
+    {
+      "trait_type": "background",
+      "value": "green"
+    },
+    {
+      "trait_type": "color",
+      "value": "black"
+    },
+    {
+      "trait_type": "hair",
+      "value": "pink"
+    },
+    {
+      "trait_type": "eyes",
+      "value": "greenlight"
+    },
+    {
+      "trait_type": "glasses",
+      "value": "none"
+    }
+  ],
+  "compiler": "CryptoMan"
+}

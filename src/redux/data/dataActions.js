@@ -21,13 +21,17 @@ const fetchDataFailed = (payload) => {
   };
 };
 
-export const fetchData = () => {
+export const fetchData = (account) => {
   return async (dispatch) => {
     dispatch(fetchDataRequest());
     try {
       let totalSupply = await store
         .getState()
         .blockchain.smartContract.methods.totalSupply()
+        .call();
+        let allTokens = await store
+        .getState()
+        .blockchain.smartContract.methods.walletOfOwner(account)
         .call();
       // let cost = await store
       //   .getState()
@@ -37,6 +41,8 @@ export const fetchData = () => {
       dispatch(
         fetchDataSuccess({
           totalSupply,
+          name,
+          allTokens,
           // cost,
         })
       );

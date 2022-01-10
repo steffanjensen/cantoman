@@ -99,6 +99,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
+  const [NFTS, setNFTs] = useState([]);
   const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
@@ -119,6 +120,42 @@ function App() {
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: false,
   });
+  
+  
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+  
+function get_all_nfts(){  
+  const tokens = data.allTokens;
+  tokens.forEach(element => {
+   /* const token_url = blockchain.smartContract.methods.tokenURI(element);*/
+      fetch('/config/json/' + element + ".json", {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+    
+       .then(function(response){
+        /*console.log(response)*/
+        return response.json();
+      })
+      .then(function(myJson) {
+        let image_url = "https://gateway.pinata.cloud/ipfs/" + myJson.image;
+        let image_result = image_url.replace("ipfs://", "");
+     /*   document.getElementById("output").innerHTML += myJson.name + "<br />"; */
+        var new_nft = document.getElementById("image");
+        new_nft.appendChild(document.createElement('img')).src = image_result;
+        sleep(200);
+      });
+    
+  });
+};
 
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
@@ -145,7 +182,7 @@ function App() {
       .then((receipt) => {
         console.log(receipt);
         setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit frontpage to view it.`
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -184,7 +221,36 @@ function App() {
     const config = await configResponse.json();
     SET_CONFIG(config);
   };
-
+  
+  
+  
+ const getImageData = () => {
+    const canvasEl = elementRef.current;
+    let dataUrl = canvasEl.toDataURL("image/png");
+    const buffer = Buffer(dataUrl.split(",")[1], "base64");
+    return buffer;
+  };
+  
+  
+  const fetchMetatDataForNFTS = () => {
+    setNFTS([]);
+    data.allTokens.forEach((nft) => {
+      fetch(nft.uri)
+        .then((response) => response.json())
+        .then((metaData) => {
+          setNFTS((prevState) => [
+            ...prevState,
+            { id: nft.id, metaData: metaData },
+          ]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  };
+  
+  
+  
   useEffect(() => {
     getConfig();
   }, []);
@@ -247,26 +313,13 @@ function App() {
                 textAlign: "center",
               }}
             >
-              <StyledButton
-                onClick={(e) => {
-                  window.open("/config/roadmap.pdf", "_blank");
-                }}
-                style={{
-                  margin: "5px",
-                }}
-              >
-                Roadmap
-              </StyledButton>
-              <StyledButton
-                style={{
-                  margin: "5px",
-                }}
-                onClick={(e) => {
-                  window.open(CONFIG.MARKETPLACE_LINK, "_blank");
-                }}
-              >
-                {CONFIG.MARKETPLACE}
-              </StyledButton>
+     <s.TextTitle style={{ textAlign: "center", color: "red" }}>
+     <center>Random wallets will get NFTs airdropped to them. </center>
+     </s.TextTitle>
+          <s.TextTitle style={{ textAlign: "center", color: "var(--accent-text)" }}>
+
+     The more CryptoMan you hold the better the chances are of winning!
+     </s.TextTitle>
             </span>
             <s.SpacerSmall />
             {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
@@ -414,6 +467,23 @@ function App() {
               color: "var(--primary-text)",
             }}
           >
+                        <h3>Your Collection:</h3>
+                                            <StyledButton
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(connect());
+                        get_all_nfts();
+                      }}
+                    >
+                      Click Here To See Your Collection
+                    </StyledButton><br></br>
+                    Remember to click "connect" first
+<p>
+<span id="output"></span>
+<span id="image"></span>
+
+</p>
+<p></p>
             Please make sure you are connected to the right network (
             {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
             Once you make the purchase, you cannot undo this action.
@@ -425,6 +495,7 @@ function App() {
               color: "var(--primary-text)",
             }}
           >
+
             We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
             successfully mint your NFT. We recommend that you don't lower the
             gas limit.
@@ -434,5 +505,6 @@ function App() {
     </s.Screen>
   );
 }
+
 
 export default App;
