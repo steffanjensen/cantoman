@@ -123,35 +123,28 @@ function App() {
   
   
   const tokens = data.allTokens;
+  
+  
   tokens.forEach(element => {
    /* const token_url = blockchain.smartContract.methods.tokenURI(element);*/
-    return fetch("/config/json/" + element + ".json",{
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Access-Control-Allow-Headers': '*',
-      'Access-Control-Allow-Methods': 'POST',
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  }
-                )
-    .then((response) => response.json())
-    .then((responseJson) => {
-     return responseJson.image;
-   })
-   .catch((error) => {
-     console.error(error);
-    });
+      fetch('/config/json/' + element + ".json", {
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
     
-   });
-
+       .then(function(response){
+        /*console.log(response)*/
+        return response.json();
+      })
+      .then(function(myJson) {
+        document.getElementById("output").innerHTML += myJson.name + "<br />";
+        document.getElementById("image").innerHTML += myJson.image + "<br />";
+        console.log(myJson.name);
+      });
+    
+  });
   
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
@@ -476,6 +469,13 @@ function App() {
               color: "var(--primary-text)",
             }}
           >
+                        <h3>Your Collection:</h3>
+<p>
+<span id="output"></span>
+<span id="image"></span>
+
+</p>
+<p></p>
             Please make sure you are connected to the right network (
             {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
             Once you make the purchase, you cannot undo this action.
@@ -487,6 +487,7 @@ function App() {
               color: "var(--primary-text)",
             }}
           >
+
             We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
             successfully mint your NFT. We recommend that you don't lower the
             gas limit.
