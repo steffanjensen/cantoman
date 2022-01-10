@@ -182,7 +182,7 @@ function get_all_nfts(){
       .then((receipt) => {
         console.log(receipt);
         setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit frontpage to view it.`
+          `WOW, the ${CONFIG.NFT_NAME} is yours! click on your collection to view it.`
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
