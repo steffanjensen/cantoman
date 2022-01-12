@@ -146,7 +146,7 @@ function get_all_nfts(){
         return response.json();
       })
       .then(function(myJson) {
-        let image_url = "https://gateway.pinata.cloud/ipfs/" + myJson.image;
+        let image_url = "https://ipfs.io/ipfs/" + myJson.image;
         let image_result = image_url.replace("ipfs://", "");
      /*   document.getElementById("output").innerHTML += myJson.name + "<br />"; */
         var new_nft = document.getElementById("image");
