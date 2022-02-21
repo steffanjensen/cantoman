@@ -379,6 +379,16 @@ function get_all_nfts(){
               </>
             ) : (
               <>
+
+                <s.TextTitle
+                  style={{ textAlign: "center", color: "#a21010" }}
+                >
+                 Random wallets will get NFTs airdropped to them. 
+
+                </s.TextTitle>
+
+                
+
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
