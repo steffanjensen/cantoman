@@ -160,11 +160,9 @@ function get_all_nfts(){
         return response.json();
       })
       .then(function(myJson) {
-       /* let image_url = "https://ipfs.io/ipfs/" + myJson.image;
-        let image_result = image_url.replace("ipfs://", ""); */
+        let image_url = "https://ipfs.io/ipfs/" + myJson.image;
+        let image_result = image_url.replace("ipfs://", "");
      /*   document.getElementById("output").innerHTML += myJson.name + "<br />"; */
-        let image_url = "/config/cryptoman/" + myJson.image;
-        let image_result = image_url.replace("ipfs://QmeCE2nHW6q3aZ3ybo7qAwpr5KWVqTyLmN7GpXurgDWPk7", "");
         var new_nft = document.getElementById("image");
         new_nft.appendChild(document.createElement('img')).src = image_result;
         sleep(200);
@@ -172,6 +170,7 @@ function get_all_nfts(){
     
   });
 };
+
 
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
