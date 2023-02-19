@@ -160,11 +160,12 @@ function get_all_nfts(){
         return response.json();
       })
       .then(function(myJson) {
-        let image_url = "https://ipfs.io/ipfs/" + myJson.image;
+        let image_url = "/config/cryptoman/" + myJson.image;
         let image_result = image_url.replace("ipfs://", "");
+        let image_results = image_result.replace("QmeCE2nHW6q3aZ3ybo7qAwpr5KWVqTyLmN7GpXurgDWPk7/", "");
      /*   document.getElementById("output").innerHTML += myJson.name + "<br />"; */
         var new_nft = document.getElementById("image");
-        new_nft.appendChild(document.createElement('img')).src = image_result;
+        new_nft.appendChild(document.createElement('img')).src = image_results;
         sleep(200);
       });
     
